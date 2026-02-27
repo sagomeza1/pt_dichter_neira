@@ -1,0 +1,293 @@
+use("dyn")
+
+db.regsitros.drop()
+db.registros.insertMany(
+
+[
+  {
+    "auditoria_id": "Audit_001",
+    "fecha": "2023-11-01T08:30:00Z",
+    "auditor": "Carlos Ruiz",
+    "cliente": { "id": "C01", "nombre": "Cruz Verde", "categorias": ["CAT04", "CAT09", "CAT11"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "cuidado personal", "id": "CAT09" },
+      { "tipo": "enlatados", "id": "CAT09" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_002",
+    "fecha": "2023-11-01T10:00:00Z",
+    "auditor": "Ana Morales",
+    "cliente": { "id": "C02", "nombre": "Embonor", "categorias": ["CAT02", "CAT03", "CAT08", "CAT10", "CAT12"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "congelados", "id": "CAT08" },
+      { "tipo": "frutas y verduras", "id": "CAT10" },
+      { "tipo": "vinos y licores", "id": "CAT12" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_003",
+    "fecha": "2023-11-02T09:00:00Z",
+    "auditor": "Luis Pérez",
+    "cliente": { "id": "C03", "nombre": "Walmart", "categorias": ["CAT01", "CAT02", "CAT04", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_004",
+    "fecha": "2023-11-02T11:30:00Z",
+    "auditor": "Sofía Castro",
+    "cliente": { "id": "C04", "nombre": "Carrefour", "categorias": ["CAT01", "CAT02", "CAT03", "CAT04", "CAT05", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "mascotas", "id": "CAT05" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_005",
+    "fecha": "2023-11-03T09:15:00Z",
+    "auditor": "Diego Jara",
+    "cliente": { "id": "C05", "nombre": "Jumbo", "categorias": ["CAT06", "CAT07", "CAT08"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_006",
+    "fecha": "2023-11-03T14:00:00Z",
+    "auditor": "Elena Ríos",
+    "cliente": { "id": "C06", "nombre": "Éxito", "categorias": ["CAT09", "CAT10", "CAT11", "CAT12"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "cuidado personal", "id": "CAT09" },
+      { "tipo": "frutas y verduras", "id": "CAT10" },
+      { "tipo": "enlatados", "id": "CAT09" },
+      { "tipo": "vinos y licores", "id": "CAT12" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_007",
+    "fecha": "2023-11-04T08:45:00Z",
+    "auditor": "Jorge Soto",
+    "cliente": { "id": "C07", "nombre": "Oxxo", "categorias": ["CAT02", "CAT03"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_008",
+    "fecha": "2023-11-04T16:20:00Z",
+    "auditor": "Carlos Ruiz",
+    "cliente": { "id": "C01", "nombre": "Cruz Verde", "categorias": ["CAT04", "CAT09", "CAT11"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "cuidado personal", "id": "CAT09" },
+      { "tipo": "enlatados", "id": "CAT09" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_009",
+    "fecha": "2023-11-05T10:00:00Z",
+    "auditor": "Ana Morales",
+    "cliente": { "id": "C02", "nombre": "Embonor", "categorias": ["CAT02", "CAT03", "CAT08", "CAT10", "CAT12"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "congelados", "id": "CAT08" },
+      { "tipo": "frutas y verduras", "id": "CAT10" },
+      { "tipo": "vinos y licores", "id": "CAT12" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_010",
+    "fecha": "2023-11-05T13:40:00Z",
+    "auditor": "Luis Pérez",
+    "cliente": { "id": "C03", "nombre": "Walmart", "categorias": ["CAT01", "CAT02", "CAT04", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_011",
+    "fecha": "2023-11-06T09:00:00Z",
+    "auditor": "Sofía Castro",
+    "cliente": { "id": "C04", "nombre": "Carrefour", "categorias": ["CAT01", "CAT02", "CAT03", "CAT04", "CAT05", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "mascotas", "id": "CAT05" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_012",
+    "fecha": "2023-11-06T14:45:00Z",
+    "auditor": "Diego Jara",
+    "cliente": { "id": "C01", "nombre": "Cruz Verde", "categorias": ["CAT04", "CAT09", "CAT11"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_013",
+    "fecha": "2023-11-07T10:00:00Z",
+    "auditor": "Elena Ríos",
+    "cliente": { "id": "C05", "nombre": "Jumbo", "categorias": ["CAT06", "CAT07", "CAT08"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "panaderia", "id": "CAT07" },
+      { "tipo": "congelados", "id": "CAT08" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_014",
+    "fecha": "2023-11-07T15:30:00Z",
+    "auditor": "Jorge Soto",
+    "cliente": { "id": "C06", "nombre": "Éxito", "categorias": ["CAT09", "CAT10", "CAT11", "CAT12"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "cuidado personal", "id": "CAT09" },
+      { "tipo": "frutas y verduras", "id": "CAT10" },
+      { "tipo": "enlatados", "id": "CAT09" },
+      { "tipo": "vinos y licores", "id": "CAT12" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_015",
+    "fecha": "2023-11-08T08:30:00Z",
+    "auditor": "Carlos Ruiz",
+    "cliente": { "id": "C07", "nombre": "Oxxo", "categorias": ["CAT02", "CAT03"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_016",
+    "fecha": "2023-11-08T12:00:00Z",
+    "auditor": "Ana Morales",
+    "cliente": { "id": "C03", "nombre": "Walmart", "categorias": ["CAT01", "CAT02", "CAT04", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_017",
+    "fecha": "2023-11-09T09:40:00Z",
+    "auditor": "Luis Pérez",
+    "cliente": { "id": "C04", "nombre": "Carrefour", "categorias": ["CAT01", "CAT02", "CAT03", "CAT04", "CAT05", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "limpieza", "id": "CAT04" },
+      { "tipo": "mascotas", "id": "CAT05" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_018",
+    "fecha": "2023-11-09T16:00:00Z",
+    "auditor": "Sofía Castro",
+    "cliente": { "id": "C02", "nombre": "Embonor", "categorias": ["CAT02", "CAT03", "CAT08", "CAT10", "CAT12"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "congelados", "id": "CAT08" },
+      { "tipo": "frutas y verduras", "id": "CAT10" },
+      { "tipo": "vinos y licores", "id": "CAT12" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_019",
+    "fecha": "2023-11-10T11:00:00Z",
+    "auditor": "Diego Jara",
+    "cliente": { "id": "C03", "nombre": "Walmart", "categorias": ["CAT01", "CAT02", "CAT04", "CAT06"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "lacteos", "id": "CAT01" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_020",
+    "fecha": "2023-11-10T15:00:00Z",
+    "auditor": "Elena Ríos",
+    "cliente": { "id": "C07", "nombre": "Oxxo", "categorias": ["CAT02", "CAT03"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "bebidas", "id": "CAT02" },
+      { "tipo": "snacks", "id": "CAT03" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  },
+  {
+    "auditoria_id": "Audit_021",
+    "fecha": "2023-11-11T10:30:00Z",
+    "auditor": "Jorge Soto",
+    "cliente": { "id": "C05", "nombre": "Jumbo", "categorias": ["CAT06", "CAT07", "CAT08"] },
+    "fotos_registro": [
+      { "tipo": "control", "nombre": "inicio" },
+      { "tipo": "carnes", "id": "CAT06" },
+      { "tipo": "panaderia", "id": "CAT07" },
+      { "tipo": "congelados", "id": "CAT08" },
+      { "tipo": "control", "nombre": "fin" }
+    ],
+  }
+]
+)
+
