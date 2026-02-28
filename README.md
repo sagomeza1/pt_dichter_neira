@@ -1,5 +1,7 @@
 # Modelado de datos y simulación generada
 
+*Para las instrucciones de como ejecutar el proceso click [aquí]().*
+
 Diseñar un flujo de validación automatizado utilizando Python, que verifique si las auditorías cumplen con el número mínimo de fotos esperadas según el cliente auditado y las categorías asociadas. El resultado debe mostrarse en un dashboard y además generarse un archivo Excel con las alertas encontradas y enviarse por correo automáticamente desde el notebook.
 
 ## Simulación generada
@@ -47,3 +49,6 @@ Después de que la información es almacenada en **MongoDB**, construimos los pi
 
 El procesamiento de los registros se realiza por medio de pipelines con `pymongo`, librería de Python para interactuar con la base de datos MongoDB. Estos pipelines pueden ser consultados [aquí](./config/pipelines.yaml).
 
+## Generación de tablas
+
+Las tablas son exportadas a un archivo de Excel en la carpeta `data`.
