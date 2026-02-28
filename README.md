@@ -52,3 +52,16 @@ El procesamiento de los registros se realiza por medio de pipelines con `pymongo
 ## Generación de tablas
 
 Las tablas son exportadas a un archivo de Excel en la carpeta `data`.
+
+## Pendientes
+
+- Generar tablero de visualización.
+- Generar método para enviar correos con informes.
+
+Por falta de tiempo no se logro culminar estos items.
+
+## Consideraciones
+
+Las tablas quedán listas para ser consumidas por Power Bi, ya que se encuentra normalizadas. Estas tablas pueden ser exportadas a Excel o ser consumidas desde MongoDB.
+
+Los pipelines y diferentes parámetros que necesitan ser definidos para la ejecución del modelo, son almacenados en archivos `.yaml`, cualquier modificación a los parámetros, como las tablas que serán exportadas al archivo de Excel, se realizan desde aquí.
