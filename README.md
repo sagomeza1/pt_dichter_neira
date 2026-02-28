@@ -36,4 +36,14 @@ Todos los detalles pueden ser consultados [aquí](documentacion/simulacion.md).
 
 Después de que la información es almacenada en **MongoDB**, construimos los pipelines para obtener las tablas, los cuales son ejecutados desde Python mediante la librería `pymongo`, dando como resultado las siguientes tablas:
 
+- clientes
+- auditoria
+- categoria
+- cliente categoria
+- foto cargada
+- fotos requeridas por cliente
+- fotos registradas por auditoria
+- resumen
+
+El procesamiento de los registros se realiza por medio de pipelines con `pymongo`, librería de Python para interactuar con la base de datos MongoDB. Estos pipelines pueden ser consultados [aquí](./config/pipelines.yaml).
 
