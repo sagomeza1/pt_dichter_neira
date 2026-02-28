@@ -1,6 +1,6 @@
 # Modelado de datos y simulación generada
 
-*Para las instrucciones de como ejecutar el proceso click [aquí]().*
+*Para las instrucciones de como ejecutar el proceso click [aquí](./documentacion/instrucciones.md).*
 
 Diseñar un flujo de validación automatizado utilizando Python, que verifique si las auditorías cumplen con el número mínimo de fotos esperadas según el cliente auditado y las categorías asociadas. El resultado debe mostrarse en un dashboard y además generarse un archivo Excel con las alertas encontradas y enviarse por correo automáticamente desde el notebook.
 
