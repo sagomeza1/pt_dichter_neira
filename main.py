@@ -6,6 +6,7 @@ from config.config import get_config
 from src.orchestrador import Orchestrador
 
 yaml_config_store = Path('./config/logging_config.yaml')
+log_file_name = Path('./logs/info.log')
 
 def main():
     logger.info(f"| {' Inicio ':.^120} |")
@@ -13,13 +14,11 @@ def main():
     orchestrador = Orchestrador(config_store)
     orchestrador.run()
     logger.info(f"| {' Fin ':.^120} |")
-    pass
-
 
 
 if __name__=='__main__':
     setup_production_config(
-        log_file_name=Path().cwd() / "logs" / "info.log"
+        log_file_name=log_file_name
     )
     logger = logging.getLogger(__name__)
     try:
@@ -27,9 +26,6 @@ if __name__=='__main__':
     except KeyboardInterrupt:
         print()
         logger.info("Proceso interrumpido manualmente")
-    # except Exception as e:
-    #     logger.error(f"Error: {e}")
-
-#%%
-1+1
-# %%
+    except Exception as e:
+        logger.error(f"Error: {e}")
+        logger.info(f"| {' ERROR ':.^120} |")

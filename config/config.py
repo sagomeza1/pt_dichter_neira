@@ -7,11 +7,12 @@ from pathlib import Path
 from typing import Callable
 from dataclasses import dataclass
 
+logger = logging.getLogger(__name__)
+
 load_dotenv()
 
 uri_mongo = os.getenv('URI', 'mongodb://localhost:27017/')
 
-logger = logging.getLogger(__name__)
 yaml_file_path = Path('config.yaml')
 
 @dataclass
@@ -35,6 +36,7 @@ class ConfigStore:
 
 def get_config(yaml_file_path: Path = yaml_file_path) -> ConfigStore:
     """Obtiene los parámetros de la configuración"""
+    logger.info(f"Conexión de MongoDB: {'local' if uri_mongo == 'mongodb://localhost:27017/' else 'nube'}")
     with open(yaml_file_path, 'r') as file:
         config_para = yaml.safe_load(file)
     return ConfigStore(uri_mongo=uri_mongo, **config_para)
