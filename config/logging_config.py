@@ -20,8 +20,8 @@ def setup_global_config() -> None:
     )
     
 def setup_production_config(
-        log_file_name: Optional[str] = None,
-        yaml_file_path:str = 'logging_config.yaml'
+        log_file_name: str | None = None,
+        yaml_file_path:str | Path = './config/logging_config.yaml'
         ) -> None:
     """Carga la configuración desde YAML"""
     try:

@@ -10,7 +10,6 @@ class PipelineGetter(Protocol):
     def get(self, collection: str) -> dict[str, str]:
         pass
 
-
 class YAMLPipelineGetter:
     def __init__(self, yaml_file):
         self.yaml_file: str | Path = yaml_file

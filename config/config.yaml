@@ -1,21 +1,33 @@
 version: 1
-detalle: str
-MongoDBProcessor:
-  db: dyn
-  collections:
-    # info collections
-    cliente: registro
-    auditoria: registro
-    categoria: registro
-    cliente_auditoria: registro
-    cliente_categoria: registro
-    auditoria_categoria: registro
-    foto_cargada: registro
-    # agg collections
-    fotos_requeridas_por_cliente: cliente_categoria
-    fotos_registradas_por_auditoria: foto_cargada
-    resumen: fotos_registradas_por_auditoria
-
+detalle: Configuración v.1
+db: dyn
+yaml_file_pipeline_getter: './config/pipelines.yaml'
+excel_file_to_export: './data/summary.xlsx'
+collections_to_process:
+  # info collections
+  cliente: registro
+  auditoria: registro
+  categoria: registro
+  cliente_auditoria: registro
+  cliente_categoria: registro
+  auditoria_categoria: registro
+  foto_cargada: registro
+  # agg collections
+  fotos_requeridas_por_cliente: cliente_categoria
+  fotos_registradas_por_auditoria: foto_cargada
+  resumen: fotos_registradas_por_auditoria
+collections_to_export:
+  # info collections
+  - cliente
+  - auditoria
+  - categoria
+  - cliente_categoria
+  - foto_cargada
+  # agg collections
+  - fotos_requeridas_por_cliente
+  - fotos_registradas_por_auditoria
+  - resumen
+obtener_tablas: true
 
 
 
