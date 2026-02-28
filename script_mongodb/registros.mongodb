@@ -1,7 +1,7 @@
 use("dyn")
 
-db.regsitros.drop()
-db.registros.insertMany(
+db.regsitro.drop()
+db.registro.insertMany(
 
 [
   {

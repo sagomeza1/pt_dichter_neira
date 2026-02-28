@@ -1,20 +1,21 @@
 version: 1
-db: dyn
 detalle: str
-obtener_tablas: true
-pipelines:
-  - collection: clientes
-    pipeline:
-      - "$group":
-          "_id": "$cliente.id"
-          "nombre": "$cliente.nombre"
-      - "$project":
-          "_id": 0
-          "id": "$_id.id"
-          "nombre": "$_id.nombre"
-  - collection:
-    pipeline:
-  - collection:
-    pipeline:
-  - collection:
-    pipeline:
+MongoDBProcessor:
+  db: dyn
+  collections:
+    # info collections
+    cliente: registro
+    auditoria: registro
+    categoria: registro
+    cliente_auditoria: registro
+    cliente_categoria: registro
+    auditoria_categoria: registro
+    foto_cargada: registro
+    # agg collections
+    fotos_requeridas_por_cliente: cliente_categoria
+    fotos_registradas_por_auditoria: foto_cargada
+    resumen: fotos_registradas_por_auditoria
+
+
+
+

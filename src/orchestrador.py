@@ -1,14 +1,15 @@
 import logging
 import logging.config
 
+from src.processrecords import RecordsProcessor
 from typing import Protocol
 
 logger = logging.getLogger(__name__)
 
 class Orchestrador(Protocol):
     
-    def get_info_tables(self) -> None:
-        pass
+    def process_records(self, processor: RecordsProcessor) -> None:
+        processor.process()
 
     def identify_alerts(self) -> None:
         pass

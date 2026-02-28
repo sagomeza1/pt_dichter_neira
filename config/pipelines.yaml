@@ -1,0 +1,165 @@
+cliente:
+  - $group:
+      _id:
+        id: $cliente.id
+        nombre: $cliente.nombre
+  - $project:
+      _id: 0
+      id: $_id.id
+      nombre: $_id.nombre
+  - $sort:
+      id: 1
+
+auditoria:
+  - $group:
+      _id:
+        id: $auditoria_id
+        fecha: $fecha
+        tienda: $cliente.nombre
+        auditor: $auditor
+  - $project:
+      _id: 0
+      id: $_id.id
+      fecha: $_id.fecha
+      tienda: $_id.tienda
+      auditor: $_id.auditor
+  - $sort:
+      id: 1
+
+categoria:
+  - $unwind: $fotos_registro
+  - $match:
+      fotos_registro.id:
+        $exists: true
+  - $group:
+      _id:
+        id: $fotos_registro.id
+        tipo: $fotos_registro.tipo
+  - $project:
+      _id: 0
+      id: $_id.id
+      tipo: $_id.tipo
+  - $sort:
+      id: 1
+
+cliente_auditoria:
+  - $group:
+      _id:
+        cliente_id: $cliente.id
+        auditoria_id: $auditoria_id
+  - $project:
+      _id: 0
+      cliente_id: $_id.cliente_id
+      auditoria_id: $_id.auditoria_id
+  - $sort:
+      cliente_id: 1
+      auditoria_id: 1
+
+cliente_categoria:
+  - $unwind: $cliente.categorias
+  - $group:
+      _id:
+        cliente: $cliente.id
+        categoria: $cliente.categorias
+  - $project:
+      _id: 0
+      cliente_id: $_id.cliente
+      categoria_id: $_id.categoria
+  - $sort:
+      cliente_id: 1
+      categoria_id: 1
+
+
+auditoria_categoria:
+  - $unwind: $cliente.categorias
+  - $group:
+      _id:
+        auditoria: $auditoria_id
+        categoria: $cliente.categorias
+  - $project:
+      _id: 0
+      auditoria_id: $_id.auditoria
+      categoria_id: $_id.categoria
+  - $sort:
+      auditoria_id: 1
+      categoria_id: 1
+
+foto_cargada:
+  - $unwind: $fotos_registro
+  - $group:
+      _id:
+        auditoria: $auditoria_id
+        tipo: $fotos_registro.tipo
+        nombre: $fotos_registro.nombre
+        id: $fotos_registro.id
+  - $project:
+      _id: 0
+      auditoria_id: $_id.auditoria
+      tipo: $_id.tipo
+      nombre: $_id.nombre
+      id: $_id.id
+
+fotos_requeridas_por_cliente:
+  - $group:
+      _id: $cliente_id
+      fotos_requeridas_por_categorias:
+        $sum: 1
+  - $addFields:
+      fotos_requeridas:
+        $add:
+          - $fotos_requeridas_por_categorias
+          - 2
+  - $project:
+      _id: 0
+      cliente_id: $_id
+      fotos_requeridas: $fotos_requeridas
+  - $sort:
+      cliente_id: 1
+
+fotos_registradas_por_auditoria:
+  - $group:
+      _id: $auditoria_id
+      total_fotos:
+        $sum: 1
+  - $project:
+      _id: 0
+      auditoria_id: $_id
+      fotos_registradas: $total_fotos
+  - $sort:
+      auditoria_id: 1
+
+resumen:
+  - $lookup:
+      from: cliente_auditoria
+      localField: auditoria_id
+      foreignField: auditoria_id
+      as: cliente
+  - $project:
+      _id: 0
+      auditoria_id: $auditoria_id
+      cliente_id:
+        $first: $cliente.cliente_id
+      fotos_registradas: $fotos_registradas
+  - $lookup:
+      from: fotos_requeridas_por_cliente
+      localField: cliente_id
+      foreignField: cliente_id
+      as: requerimiento
+  - $project:
+      _id: 0
+      auditoria_id: $auditoria_id
+      cliente_id: $cliente_id
+      fotos_registradas: $fotos_registradas
+      fotos_requeridas:
+        $first: $requerimiento.fotos_requeridas
+  - $addFields:
+      alerta:
+        $cond:
+          if:
+            $gte:
+              - $fotos_registradas
+              - $fotos_requeridas
+          then: false
+          else: true
+  - $sort:
+      auditoria_id: 1

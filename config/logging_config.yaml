@@ -24,10 +24,8 @@ handlers:
     mode: a
 # Para un logger concreto
 loggers:
-  projects.example:
-    level: DEBUG
-    handlers: [file]
-    propagate: true
+  pymongo:
+    level: INFO
 # Root
 root:
   level: INFO
