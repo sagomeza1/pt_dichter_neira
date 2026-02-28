@@ -1,3 +1,20 @@
 version: 1
+db: dyn
+detalle: str
 obtener_tablas: true
-pipelines: 1
+pipelines:
+  - collection: clientes
+    pipeline:
+      - "$group":
+          "_id": "$cliente.id"
+          "nombre": "$cliente.nombre"
+      - "$project":
+          "_id": 0
+          "id": "$_id.id"
+          "nombre": "$_id.nombre"
+  - collection:
+    pipeline:
+  - collection:
+    pipeline:
+  - collection:
+    pipeline:
